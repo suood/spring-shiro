@@ -35,13 +35,13 @@
     </bean>
 
     <!-- Spring整合Mybatis -->
-    <bean id="sqlSessionFactory" class="com.wangzhixuan.commons.mybatis.MPSqlSessionFactoryBean">
+    <bean id="sqlSessionFactory" class="com.suood.commons.mybatis.MPSqlSessionFactoryBean">
     <!-- <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean"> -->
         <property name="dataSource" ref="dataSource"/>
         <!-- 自动扫描Mapping.xml文件 -->
         <property name="mapperLocations" value="classpath*:/sqlMapperXml/*.xml"></property>
         <property name="configLocation" value="classpath:xml/mybatis-config.xml"></property>
-        <property name="typeAliasesPackage" value="com.wangzhixuan.model"/>
+        <property name="typeAliasesPackage" value="com.suood.model"/>
         <!-- 
             idType，全局id生成策略
             0:数据库ID自增、1:用户输入ID
@@ -62,7 +62,7 @@
     <!-- MyBatis 动态实现  -->
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 对Dao 接口动态实现，需要知道接口在哪  -->
-        <property name="basePackage" value="com.wangzhixuan.mapper"/>
+        <property name="basePackage" value="com.suood.mapper"/>
     </bean>
 
     <!-- 事务管理 -->
@@ -84,6 +84,6 @@
 
     <!-- 配置切面 -->
     <aop:config expose-proxy="true" proxy-target-class="true">
-        <aop:advisor advice-ref="transactionAdvice" pointcut="execution(* com.wangzhixuan.service..*.*(..))"/>
+        <aop:advisor advice-ref="transactionAdvice" pointcut="execution(* com.suood.service..*.*(..))"/>
     </aop:config>
 </beans>
